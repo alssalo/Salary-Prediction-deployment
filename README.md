@@ -1,8 +1,3 @@
-# Dash Image Stitching and Registration
-This is a demo of the Dash interactive Python framework developed by [Plotly](https://plot.ly/).
-
-Dash abstracts away all of the technologies and protocols required to build an interactive web-based application and is a simple and effective way to bind a user interface around your Python code. To learn more check out our [documentation](https://plot.ly/dash).
-
 ## Getting Started
 
 ### Running the app locally
@@ -23,8 +18,8 @@ Clone the git repo, then install the requirements with pip
 
 ```
 
-git clone https://github.com/plotly/dash-sample-apps
-cd dash-sample-apps/apps/dash-oil-and-gas
+git clone https://github.com/alssalo/Salary-Prediction-deployment
+cd Salary-Prediction-deployment
 pip install -r requirements.txt
 
 ```
@@ -39,7 +34,7 @@ python app.py
 
 ## About the app
 
-The purpose of this Dash app is to combine multiple images with overlapping elements into one, cohesive image. Users have the ability to upload images from their local drive or to test images from the demo.
+The purpose of this Dash app is to predict the salary of an employee for the given inputs and visualize the trends.
 
 ## Built With
 
