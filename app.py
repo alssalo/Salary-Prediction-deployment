@@ -37,7 +37,7 @@ app.config.suppress_callback_exceptions = True
 # Load the model
 model = joblib.load(open("model.pkl", 'rb'))
 
-
+# declare and intialize  global variable
 global salarydata_df
 salarydata_df=pd.read_csv("train_data.csv")
 
@@ -63,7 +63,13 @@ PATH = pathlib.Path(__file__).parent
 
 DATA_PATH = PATH.joinpath("data").resolve()
 
+"""
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------App functions----------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
 
+# app functions
 
 def demo_explanation():
     # Markdown files
@@ -99,70 +105,63 @@ def feature_workshop(df,feat_list,col_name):
     df = pd.merge(df, mean_encode, on=feat_list, how='left')
     return df
 
+"""
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------App layout---------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
 
-
+# app layout
 
 app.layout = html.Div(
     children=[
-        html.Div(
-            [
-                #html.Img(
-                 #   src=app.get_asset_url("dash-logo.png"), className="plotly-logo"
-                #),
-                html.H1(children="Salary Prediction App"),
+        html.Div([
+            html.H1(children="Salary Prediction App"),
                 instructions(),
-                html.Div(
-                    [
+                html.Div([
                         html.Button(
                             "LEARN MORE",
                             className="button_instruction",
-                            id="learn-more-button",
+                            id="learn-more-button",),
+                         ],
+                        className="mobile_buttons",
                         ),
-                       #  html.Button(
-                        #    "UPLOAD DEMO DATA", className="demo_button", id="demo"
-                        #),
-                    ],
-                    className="mobile_buttons",
-                ),
                 html.Div(
-                    # Empty child function for the callback
-                    html.Div(id="demo-explanation", children=[])
-                ),
-                html.Div(
-                    [
+                         # Empty child function for the callback
+                         html.Div(id="demo-explanation", children=[])
+                        ),
+                html.Div([
                         html.Label("Job Type"),
                         dcc.Dropdown(
-                            id='my-dropdown',
-                            options=dictlist1,
-                            value='CEO',style={
-                                'height': '0.5px', 
-                                'width': '325px',
-                                "margin-left": "29px",
-                                "margin-top": "2px",
-                                'color':'rgb(0,0,0)', 
-                                'font-size': "100%",
-                                'font-color': "rgba(255,255,255,255)",
-                                'background': 'rgba(0,0,0,0)',
-                                'position': 'relative',
-                                },
-                         ),
+                                    id='my-dropdown',
+                                    options=dictlist1,
+                                    value='CEO',style={
+                                    'height': '0.5px', 
+                                    'width': '325px',
+                                    "margin-left": "29px",
+                                    "margin-top": "2px",
+                                    'color':'rgb(0,0,0)', 
+                                    'font-size': "100%",
+                                    'font-color': "rgba(255,255,255,255)",
+                                    'background': 'rgba(0,0,0,0)',
+                                    'position': 'relative',},
+                                    ),
                          html.Br(),
-                        html.Label("Degree"),
-                        dcc.Dropdown(
-                            id='my-dropdown1',
-                            options=dictlist2,
-                            value='MASTERS',style={
-                                'height': '0.5px', 
-                                'width': '325px',
-                                "margin-top": "2px",
-                                "margin-left": "29px",
-                                'color':'rgb(0,0,0)', 
-                                'font-size': "100%",
-                                'font-color': "rgba(255,255,255,255)",
-                                'background': 'rgba(0,0,0,0)',
-                                'position': 'relative',
-                                },
-                         ),
+                         html.Label("Degree"),
+                         dcc.Dropdown(
+                                    id='my-dropdown1',
+                                    options=dictlist2,
+                                    value='MASTERS',style={
+                                    'height': '0.5px', 
+                                    'width': '325px',
+                                    "margin-top": "2px",
+                                    "margin-left": "29px",
+                                    'color':'rgb(0,0,0)', 
+                                    'font-size': "100%",
+                                    'font-color': "rgba(255,255,255,255)",
+                                    'background': 'rgba(0,0,0,0)',
+                                    'position': 'relative',},
+                                    ),
                          html.Br(),
                         html.Label("Major"),
                         dcc.Dropdown(
@@ -218,22 +217,16 @@ app.layout = html.Div(
                 html.Br(),
                 html.Br(),
                 html.Div([
-                 html.Button(
-                    "Predict ", id="button-stitch", className="button_submit",style={'background-color':'turquoise'}
-                ),
-                html.Button(
-                    "Visualize ", id="button-stitch2", className="button_submit",style={'background-color':'#4181FF'}
-                ),
-                html.Div(id='container123')
-                ]),
-                #html.Button(
-                 #   "Predict ", id="button-stitch", className="button_submit",style={'background-color':'turquoise'}
-                #),
-                #html.Button(
-                 #   "Visualize ", id="button-stitch2", className="button_submit",style={'background-color':'turquoise'}
-                #),
+                          html.Button(
+                                    "Predict ", id="button-stitch", className="button_submit",style={'background-color':'turquoise'}
+                                      ),
+                          html.Button(
+                                     "Visualize ", id="button-stitch2", className="button_submit",style={'background-color':'#4181FF'}
+                                      ),
+                          html.Div(id='container123')
+                        ]),
                 html.Br(),
-               html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'})#{'background-color':'turquoise','font-size':'24','margin-left':'12px'})
+                html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'})
             ],
             className="four columns instruction",
         ),
@@ -268,6 +261,14 @@ app.layout = html.Div(
     className="row twelve columns",
 )
 
+"""
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------App callback definitions----------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
+
+# app callback definitions
+
 @app.callback(
     Output("tabs-content-example", "children"), [Input("stitching-tabs", "value")]#,[State("my-dropdown", "value")]#,[State("button-stitch2", "n_clicks")]
 )
@@ -290,22 +291,6 @@ def fill_tab(tab):#,state):
             dcc.Graph(id='my-graph3')
     ]
 
-"""
-@app.callback(Output('my-graph', 'figure'), [Input("button-stitch2", "n_clicks")],
-[State("my-dropdown", "value")])
-def make_figure(vals,selected_dropdown_value):
-    a=feature_workshop(salarydata_df,["jobType","yearsExperience"],"job_exp_mean")
-    data=a[a.jobType==selected_dropdown_value]
-    if selected_dropdown_value ==None:
-        selected_dropdown_value="CFO"
-    #fig = go.Figure()
-    #fig = go.Figure(go.Scatter(x=data.yearsExperience, y=data.job_exp_mean))
-    #fig.add_trace(go.Scatter(x=data.yearsExperience, y=data.job_exp_mean,mode='lines',name='lines'))
-    #fig.add_trace(go.Scatter(x=data.yearsExperience, y=data.salary,mode='markers', name='markers'))
-    fig1=px.line(a[a.jobType=="CEO"], x="yearsExperience", y="job_exp_mean")#,title=a.jobType)
-    if(vals!=None):
-        return(fig1)#go.Figure(go.Scatter(x=data.yearsExperience, y=data.job_exp_mean)))
-        """
 
 
 @app.callback([Output('my-graph', 'figure'),Output('my-graph2', 'figure'),Output('my-graph3', 'figure')] ,[Input("button-stitch2", "n_clicks"),Input("stitching-tabs", "value")],
@@ -332,32 +317,7 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
 
         return(fig1,fig2,fig3)#go.Figure(go.Scatter(x=data.yearsExperience, y=data.job_exp_mean)))
 
-        """
-
-@app.callback(Output('my-graph2', 'figure'), [Input("button-stitch2", "n_clicks")],
-[State("my-dropdown", "value")])
-def make_figure(selected_dropdown_value):
-    a=feature_workshop(salarydata_df,["jobType","degree"],"job_exp_mean")
-    data=a[a.jobType==selected_dropdown_value]
-    fig = go.Figure(data=[go.Bar(x=data.degree, y=data.job_exp_mean)])
-    fig.update_traces(marker_color='rgb(158,202,225)', marker_line_color='rgb(8,48,107)',marker_line_width=1.5, opacity=0.6)
-    if(vals!=None):
-        return(fig)
-
-@app.callback(Output('my-graph3', 'figure'), [Input("button-stitch2", "n_clicks")],
-[State("my-dropdown", "value")])
-def make_figure(selected_dropdown_value):
-    a=feature_workshop(salarydata_df,["jobType","industry"],"job_exp_mean")
-    data=a[a.jobType==selected_dropdown_value]
-    fig = go.Figure(data=[go.Bar(x=data.industry, y=data.job_exp_mean)])
-    fig.update_traces(marker_color='rgb(158,202,225)', marker_line_color='rgb(8,48,107)',marker_line_width=1.5, opacity=0.6)
-    if(vals!=None):
-        return(fig)
-
-        """
-
-
-
+       
 @app.callback(
     Output("my-div", "children"),
     [Input("button-stitch", "n_clicks")],
@@ -411,6 +371,13 @@ def learn_more(n_clicks):
 
     n_clicks += 1
     return (html.Div(), "Learn More")
+
+
+"""
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------Main function----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"""
 
 
 if __name__ == "__main__":
