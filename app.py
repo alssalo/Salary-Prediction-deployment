@@ -319,7 +319,7 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
 
        
 @app.callback(
-    Output("my-div", "children"),
+    Output[("my-div", "children")],
     [Input("button-stitch", "n_clicks")],
     [
     State("my-dropdown", "value"),
