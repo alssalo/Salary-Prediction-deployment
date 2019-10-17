@@ -5,3 +5,5 @@ gunicorn==19.9.0
 scikit-image
 pandas
 numpy
+scipy
+sklearn
