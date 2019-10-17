@@ -334,19 +334,19 @@ def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     features=[jobtype,Degree,Major,Industry,Exp,Miles]
     features[-1]=int(features[-1])
     features[-2]=int(features[-2])
-    #train=pd.read_csv("train_data.csv")
-    #train.drop(["salary","companyId"],axis=1,inplace=True)
-    #final_features = pd.DataFrame([features],columns=["jobType","degree","major","industry","yearsExperience","milesFromMetropolis"])
-    #final_features=pd.concat([final_features,train]).reset_index(drop=True)
-    #prediction = model.predict(final_features[0:50])
-    #prediction=prediction[0]
+    train=pd.read_csv("train_data.csv")
+    train.drop(["salary","companyId"],axis=1,inplace=True)
+    final_features = pd.DataFrame([features],columns=["jobType","degree","major","industry","yearsExperience","milesFromMetropolis"])
+    final_features=pd.concat([final_features,train]).reset_index(drop=True)
+    prediction = model.predict(final_features[0:50])
+    prediction=prediction[0]
     if(vals==None):
         return(None)
-    #if (prediction<0 or prediction>400):
-     #   return("Unusual feature combination!! Please try again with more valid feature combination.......")
+    if (prediction<0 or prediction>400):
+        return("Unusual feature combination!! Please try again with more valid feature combination.......")
     else:
-        #return("Prediction: "+str(round(float(prediction),3))+str(vals))
-        return("Working")
+        return("Prediction: "+str(round(float(prediction),3))+str(vals))
+        #return("Working")
 
 
 
