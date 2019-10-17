@@ -136,6 +136,9 @@ app.layout = html.Div(
                                     id='my-dropdown',
                                     options=dictlist1,
                                     value='CEO',style={
+                                    'margin':'0 auto',
+                                    'display': 'inherit',
+                                    'text-align':' cente',
                                     'height': '0.5px', 
                                     'width': '325px',
                                     "margin-left": "29px",
@@ -152,6 +155,9 @@ app.layout = html.Div(
                                     id='my-dropdown1',
                                     options=dictlist2,
                                     value='MASTERS',style={
+                                    'margin':'0 auto',
+                                    'display': 'inherit',
+                                    'text-align':' cente',
                                     'height': '0.5px', 
                                     'width': '325px',
                                     "margin-top": "2px",
@@ -168,6 +174,9 @@ app.layout = html.Div(
                             id='my-dropdown2',
                             options=dictlist3,
                             value='MATH',style={
+                                'margin':'0 auto',
+                                'display': 'inherit',
+                                'text-align':' cente',
                                 'height': '0.5px', 
                                 'width': '325px',
                                 "margin-top": "2px",
