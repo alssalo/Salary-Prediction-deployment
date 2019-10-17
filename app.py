@@ -137,7 +137,7 @@ app.layout = html.Div(
                                     options=dictlist1,
                                     value='CEO',style={
                                     'margin':'0 auto',
-                                    'display': 'inherit',
+                                    #'display': 'inherit',
                                     'text-align':' cente',
                                     'height': '0.5px', 
                                     'width': '325px',
@@ -149,14 +149,18 @@ app.layout = html.Div(
                                     'background': 'rgba(0,0,0,0)',
                                     'position': 'relative',},
                                     ),
+                                     ],
+                    className="mobile_forms",
+                ),
                          html.Br(),
+                         html.Div([
                          html.Label("Degree"),
                          dcc.Dropdown(
                                     id='my-dropdown1',
                                     options=dictlist2,
                                     value='MASTERS',style={
                                     'margin':'0 auto',
-                                    'display': 'inherit',
+                                    #'display': 'inherit',
                                     'text-align':' cente',
                                     'height': '0.5px', 
                                     'width': '325px',
@@ -168,14 +172,18 @@ app.layout = html.Div(
                                     'background': 'rgba(0,0,0,0)',
                                     'position': 'relative',},
                                     ),
+                                     ],
+                    className="mobile_forms",
+                ),
                          html.Br(),
+                         html.Div([
                         html.Label("Major"),
                         dcc.Dropdown(
                             id='my-dropdown2',
                             options=dictlist3,
                             value='MATH',style={
                                 'margin':'0 auto',
-                                'display': 'inherit',
+                                #'display': 'inherit',
                                 'text-align':' cente',
                                 'height': '0.5px', 
                                 'width': '325px',
