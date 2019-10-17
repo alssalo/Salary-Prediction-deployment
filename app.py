@@ -223,10 +223,13 @@ app.layout = html.Div(
                           html.Button(
                                      "Visualize ", id="button-stitch2", className="button_submit",style={'background-color':'#4181FF'}
                                       ),
-                          #html.Div(id='container123')
+                          html.Div(id='container123')
                         ]),
                 html.Br(),
-                html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'})
+                html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'}),
+                html.Div(id='div1'),
+                html.Div(id='div2')
+
             ],
             className="four columns instruction",
         ),
@@ -270,7 +273,7 @@ app.layout = html.Div(
 # app callback definitions
 
 @app.callback(
-    [Output("tabs-content-example", "children")], [Input("stitching-tabs", "value")]#,[State("my-dropdown", "value")]#,[State("button-stitch2", "n_clicks")]
+    Output("tabs-content-example", "children"), [Input("stitching-tabs", "value")]#,[State("my-dropdown", "value")]#,[State("button-stitch2", "n_clicks")]
 )
 def fill_tab(tab):#,state):
     #if state!=None:
@@ -319,7 +322,7 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
 
        
 @app.callback(
-    [Output("my-div", "children")],
+    [Output("my-div", "children"),Output("div1", "children")],
     [Input("button-stitch", "n_clicks")],
     [
     State("my-dropdown", "value"),
@@ -342,11 +345,11 @@ def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     prediction = model.predict(final_features[0:50])
     prediction=prediction[0]
     if(vals==None):
-        return(None)
+        return(None,0)
     elif (prediction<0 or prediction>400):
-        return("Unusual feature combination!! Please try again with more valid feature combination.......")
+        return("Unusual feature combination!! Please try again with more valid feature combination.......",0)
     else:
-        return("Prediction: "+str(round(float(prediction),3))+str(vals))
+        return("Prediction: "+str(round(float(prediction),3))+str(vals),0)
 
 
 
