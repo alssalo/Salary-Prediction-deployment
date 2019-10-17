@@ -323,7 +323,7 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
        
 @app.callback(
     [Output("my-div", "children"),Output("div1", "children")],
-    [Input("button-stitch", "n_clicks")],
+    [Input("button-stitch2", "n_clicks")],
     [
     State("my-dropdown", "value"),
     State("my-dropdown1", "value"),
@@ -342,12 +342,12 @@ def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     final_features=pd.concat([final_features,train]).reset_index(drop=True)
     prediction = model.predict(final_features[0:50])
     prediction=prediction[0]
-    #if(vals==None):
-     #   return(None,0)
+    if(vals==None):
+        return(None,None)
     if (prediction<0 or prediction>400):
-        return("Unusual feature combination!! Please try again with more valid feature combination.......",0)
+        return("Unusual feature combination!! Please try again with more valid feature combination.......",None)
     else:
-        return("Prediction: "+str(round(float(prediction),3))+str(vals),0)
+        return("Prediction: "+str(round(float(prediction),3))+str(vals),None)
 
 
 
