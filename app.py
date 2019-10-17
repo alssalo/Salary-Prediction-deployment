@@ -226,9 +226,7 @@ app.layout = html.Div(
                           html.Div(id='container123')
                         ]),
                 html.Br(),
-                html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'}),
-                html.Div(id='div1'),
-                html.Div(id='div2')
+                html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'})
 
             ],
             className="four columns instruction",
@@ -322,8 +320,8 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
 
        
 @app.callback(
-    [Output("my-div", "children"),Output("div1", "children")],
-    [Input("button-stitch2", "n_clicks")],
+    Output("my-div", "children"),
+    [Input("button-stitch", "n_clicks")],
     [
     State("my-dropdown", "value"),
     State("my-dropdown1", "value"),
@@ -336,18 +334,19 @@ def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     features=[jobtype,Degree,Major,Industry,Exp,Miles]
     features[-1]=int(features[-1])
     features[-2]=int(features[-2])
-    train=pd.read_csv("train_data.csv")
-    train.drop(["salary","companyId"],axis=1,inplace=True)
-    final_features = pd.DataFrame([features],columns=["jobType","degree","major","industry","yearsExperience","milesFromMetropolis"])
-    final_features=pd.concat([final_features,train]).reset_index(drop=True)
-    prediction = model.predict(final_features[0:50])
-    prediction=prediction[0]
+    #train=pd.read_csv("train_data.csv")
+    #train.drop(["salary","companyId"],axis=1,inplace=True)
+    #final_features = pd.DataFrame([features],columns=["jobType","degree","major","industry","yearsExperience","milesFromMetropolis"])
+    #final_features=pd.concat([final_features,train]).reset_index(drop=True)
+    #prediction = model.predict(final_features[0:50])
+    #prediction=prediction[0]
     if(vals==None):
-        return(None,None)
-    if (prediction<0 or prediction>400):
-        return("Unusual feature combination!! Please try again with more valid feature combination.......",None)
+        return(None)
+    #if (prediction<0 or prediction>400):
+     #   return("Unusual feature combination!! Please try again with more valid feature combination.......")
     else:
-        return("Prediction: "+str(round(float(prediction),3))+str(vals),None)
+        #return("Prediction: "+str(round(float(prediction),3))+str(vals))
+        return("Working")
 
 
 
