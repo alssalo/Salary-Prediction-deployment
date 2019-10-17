@@ -223,7 +223,7 @@ app.layout = html.Div(
                           html.Button(
                                      "Visualize ", id="button-stitch2", className="button_submit",style={'background-color':'#4181FF'}
                                       ),
-                          html.Div(id='container123')
+                          #html.Div(id='container123')
                         ]),
                 html.Br(),
                 html.Div(id='my-div',style={ 'font-size': '3.2rem', 'line-height': '1.2' ,'letter-spacing': '-.1rem', 'margin-bottom': '2rem', 'color':'#407DFA','margin-left':'12px'})
