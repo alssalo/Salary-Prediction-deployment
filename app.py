@@ -270,7 +270,7 @@ app.layout = html.Div(
 # app callback definitions
 
 @app.callback(
-    Output("tabs-content-example", "children"), [Input("stitching-tabs", "value")]#,[State("my-dropdown", "value")]#,[State("button-stitch2", "n_clicks")]
+    [Output("tabs-content-example", "children")], [Input("stitching-tabs", "value")]#,[State("my-dropdown", "value")]#,[State("button-stitch2", "n_clicks")]
 )
 def fill_tab(tab):#,state):
     #if state!=None:
@@ -319,7 +319,7 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
 
        
 @app.callback(
-    Output[("my-div", "children")],
+    [Output("my-div", "children")],
     [Input("button-stitch", "n_clicks")],
     [
     State("my-dropdown", "value"),
