@@ -383,8 +383,8 @@ def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     prediction=prediction[0]
     if(vals==None):
         return(None)
-    #elif ((final_features.jobType=="JANITOR") and (final_features.degree=="DOCTORAL")):
-     #   return("Invalid Combination")
+    elif (prediction<0 or prediction>400):
+        return("Unusual feature combination!! Please try again with more valid feature combination.......")
     else:
         return("Prediction: "+str(round(float(prediction),3))+str(vals))
 
