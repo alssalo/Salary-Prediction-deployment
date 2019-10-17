@@ -331,9 +331,7 @@ def make_figure(vals,tab,selected_dropdown_value):#,state):
     State("downsample", "value"),
     State("exp", "value"),
     State("miles", "value")
-    ]
-) 
-
+    ]) 
 def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     features=[jobtype,Degree,Major,Industry,Exp,Miles]
     features[-1]=int(features[-1])
