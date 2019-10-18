@@ -362,7 +362,7 @@ def predict(vals,jobtype,Degree,Major,Industry,Exp,Miles):
     if (prediction<0 or prediction>400):
         return("Unusual feature combination!! Please try again with more valid feature combination.......")
     else:
-        return("Prediction: "+str(round(float(prediction),3))+str(vals))
+        return("Prediction: "+"$"+str(round(float(prediction),3))+str(vals)+"/ annum")
         #return("Working")
 
 
