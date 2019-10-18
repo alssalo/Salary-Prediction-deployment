@@ -1,7 +1,5 @@
 import numpy as np
 import pandas as pd
-from skimage import io, data, transform
-from time import sleep
 
 from sklearn.externals import joblib
 
@@ -24,9 +22,7 @@ from dash_canvas.utils import (
     brightness_adjust,
     contrast_adjust,
 )
-from registration import register_tiles
-from utils import StaticUrlPath
-import pathlib
+
 
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
@@ -58,10 +54,6 @@ for col in list(salarydata_df.major.unique()):
     dictlist3.append({'label':col,'value':col})
 
 
-# get relative data folder
-PATH = pathlib.Path(__file__).parent
-
-DATA_PATH = PATH.joinpath("data").resolve()
 
 """
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,7 +78,7 @@ def instructions():
     return html.P(
         children=[
             """
-    For Prediction:
+         For Prediction:
     -Choose values of the menu  
     -Press predict Button
     
